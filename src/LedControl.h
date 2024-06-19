@@ -62,7 +62,11 @@ const static byte charTable [] PROGMEM  = {
  * @class LedControl
  * @brief A class for controlling LEDs with a MAX7219/MAX7221
  */
+#ifdef _ADAFRUIT_GFX_H
+class LedControl : public Adafruit_GFX {
+#else
 class LedControl {
+#endif
     private :
         /* The array for shifting the data to the devices */
         byte spidata[16];
@@ -90,6 +94,11 @@ class LedControl {
          * @param numDevices    Number of devices connected.
          */
         LedControl(int dataPin, int clkPin, int csPin, int numDevices=1);
+
+        /* Adafruit GFX method*/
+        #ifdef _ADAFRUIT_GFX_H
+        virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
+        #endif
 
         /**
          * @brief Gets the number of devices attached to this LedControl.
