@@ -1,5 +1,5 @@
 /*
- *    LedControl.cpp - A library for controling Leds with a MAX7219/MAX7221
+ *    MAX72xxLedControl.cpp - A library for controling Leds with a MAX7219/MAX7221
  *    Copyright (c) 2007 Eberhard Fahle
  * 
  *    Permission is hereby granted, free of charge, to any person
@@ -25,7 +25,7 @@
  */
 
 
-#include "LedControl.h"
+#include "MAX72xxLedControl.h"
 
 //the opcodes for the MAX7221 and MAX7219
 #define OP_NOOP   0
