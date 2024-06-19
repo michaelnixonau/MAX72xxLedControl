@@ -25,3 +25,14 @@ void loop() {
     matrix.setLed(0, 1, 3, HIGH);
 }
 ```
+
+## Adafruit GFX
+This library is compatible with the [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library) graphics library, which enables more advanced graphics functionality on 8x8 LED displays.
+
+Simply include Adafruit GFX to get started:
+
+```
+#include <Adafruit_GFX.h>
+```
+
+[Learn more about the commands available with Adafruit GFX](https://learn.adafruit.com/adafruit-gfx-graphics-library/overview).
