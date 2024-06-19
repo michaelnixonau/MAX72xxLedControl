@@ -1,5 +1,5 @@
 /*
- *    MAX72xxLedControl.h - A library for controling Leds with a MAX7219/MAX7221
+ *    MaxLedControl.h - A library for controling Leds with a MAX7219/MAX7221
  *    Copyright (c) 2007 Eberhard Fahle
  * 
  *    Permission is hereby granted, free of charge, to any person

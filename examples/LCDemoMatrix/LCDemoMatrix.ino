@@ -1,5 +1,5 @@
 //We always have to include the library
-#include "MAX72xxLedControl.h"
+#include "MaxLedControl.h"
 
 /*
  Now we need a LedControl to work with.
