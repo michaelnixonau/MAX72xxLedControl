@@ -163,6 +163,9 @@ class LedControl {
         /* Adafruit GFX method*/
         #ifdef _ADAFRUIT_GFX_H
         virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
+
+        template<typename T>
+        void scroll(const T& input);
         #endif
 
         /**

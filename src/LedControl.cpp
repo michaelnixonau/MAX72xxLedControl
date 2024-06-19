@@ -161,6 +161,27 @@ void LedControl::drawPixel(int16_t x, int16_t y, uint16_t color) {
     // Set or clear the pixel based on the color (non-zero color sets the pixel)
     setLed(0, y, x, (color > 0));
 }
+
+template<typename T>
+void LedControl::scroll(const T& input) {
+    String message = String(input);
+    int textX = width();
+    int textY = 0;
+    int textWidth = message.length() * 6;
+
+    setTextWrap(false);
+
+    while (textX + textWidth >= 0) {
+        clear();
+        setCursor(textX, textY);
+        print(message);
+
+        textX--;
+        delay(50);
+    }
+
+    clear();
+}
 #endif
 
 void LedControl::setRow(int addr, int row, byte value) {
