@@ -146,6 +146,11 @@ class LedControl {
         void clearDisplay(int addr);
 
         /**
+         * @brief Switch all LEDs off (all displays).
+         */
+        void clear();
+
+        /**
          * @brief Set the status of a single LED.
          * 
          * @param addr      Address of the display to control.

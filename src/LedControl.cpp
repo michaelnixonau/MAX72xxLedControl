@@ -129,6 +129,11 @@ void LedControl::clearDisplay(int addr) {
     }
 }
 
+void LedControl::clear() {
+    for(int i=0;i<maxDevices;i++)
+        clearDisplay(i);
+}
+
 void LedControl::setLed(int addr, int row, int column, boolean state) {
     int offset;
     byte val=0x00;
