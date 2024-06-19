@@ -95,10 +95,17 @@ class LedControl {
          */
         LedControl(int dataPin, int clkPin, int csPin, int numDevices=1);
 
-        /* Adafruit GFX method*/
-        #ifdef _ADAFRUIT_GFX_H
-        virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
-        #endif
+        /**
+         * @brief Initialises the display.
+         */
+        void begin();
+        
+        /**
+         * @brief Initialises the display.
+         * 
+         * @param intensity Initial brightness of the display (0-15).
+         */
+        void begin(int intensity);
 
         /**
          * @brief Gets the number of devices attached to this LedControl.
@@ -147,6 +154,11 @@ class LedControl {
          * @param state     State of the LED (true/false).
          */
         void setLed(int addr, int row, int col, boolean state);
+
+        /* Adafruit GFX method*/
+        #ifdef _ADAFRUIT_GFX_H
+        virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
+        #endif
 
         /**
          * @brief Set all 8 LEDs in a row to a new state.

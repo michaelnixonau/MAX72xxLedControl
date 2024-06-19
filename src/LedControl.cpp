@@ -74,6 +74,22 @@ LedControl(int dataPin, int clkPin, int csPin, int numDevices=1) {
     }
 }
 
+void LedControl::begin() {
+    for (int addr = 0; addr < getDeviceCount(); addr++) {
+        shutdown(addr, false);
+        setIntensity(addr, 8);
+        clearDisplay(addr);
+    }
+}
+
+void LedControl::begin(int intensity) {
+    for (int addr = 0; addr < getDeviceCount(); addr++) {
+        shutdown(addr, false);
+        setIntensity(addr, intensity);
+        clearDisplay(addr);
+    }
+}
+
 int LedControl::getDeviceCount() {
     return maxDevices;
 }
@@ -132,6 +148,7 @@ void LedControl::setLed(int addr, int row, int column, boolean state) {
     spiTransfer(addr, row+1,status[offset+row]);
 }
 
+#ifdef _ADAFRUIT_GFX_H
 void LedControl::drawPixel(int16_t x, int16_t y, uint16_t color) {
     if (x < 0 || x >= 8 || y < 0 || y >= 8) {
         return;  // Out of bounds
@@ -139,6 +156,7 @@ void LedControl::drawPixel(int16_t x, int16_t y, uint16_t color) {
     // Set or clear the pixel based on the color (non-zero color sets the pixel)
     setLed(0, y, x, (color > 0));
 }
+#endif
 
 void LedControl::setRow(int addr, int row, byte value) {
     int offset;
