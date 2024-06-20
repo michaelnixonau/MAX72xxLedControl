@@ -43,12 +43,8 @@
 #define OP_SHUTDOWN    12
 #define OP_DISPLAYTEST 15
 
-#ifdef _ADAFRUIT_GFX_H
 LedControl::LedControl(int dataPin, int clkPin, int csPin, int numDevices)
     : Adafruit_GFX(numDevices * 8, 8), SPI_MOSI(dataPin), SPI_CLK(clkPin), SPI_CS(csPin), maxDevices(numDevices) {
-#else
-LedControl::LedControl(int dataPin, int clkPin, int csPin, int numDevices=1) {
-#endif
     SPI_MOSI=dataPin;
     SPI_CLK=clkPin;
     SPI_CS=csPin;
@@ -153,7 +149,6 @@ void LedControl::setLed(int addr, int row, int column, boolean state) {
     spiTransfer(addr, row+1,status[offset+row]);
 }
 
-#ifdef _ADAFRUIT_GFX_H
 void LedControl::drawPixel(int16_t x, int16_t y, uint16_t color) {
     if (x < 0 || x >= 8 || y < 0 || y >= 8) {
         return;  // Out of bounds
@@ -182,7 +177,6 @@ void LedControl::scroll(const T& input) {
 
     clear();
 }
-#endif
 
 void LedControl::setRow(int addr, int row, byte value) {
     int offset;

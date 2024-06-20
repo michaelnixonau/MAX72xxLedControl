@@ -35,6 +35,8 @@
 #include <WProgram.h>
 #endif
 
+#include <Adafruit_GFX.h>
+
 /*
  * Segments to be switched on for characters and digits on
  * 7-Segment Displays
@@ -62,11 +64,7 @@ const static byte charTable [] PROGMEM  = {
  * @class LedControl
  * @brief A class for controlling LEDs with a MAX7219/MAX7221
  */
-#ifdef _ADAFRUIT_GFX_H
 class LedControl : public Adafruit_GFX {
-#else
-class LedControl {
-#endif
     private :
         /* The array for shifting the data to the devices */
         byte spidata[16];
@@ -160,13 +158,10 @@ class LedControl {
          */
         void setLed(int addr, int row, int col, boolean state);
 
-        /* Adafruit GFX method*/
-        #ifdef _ADAFRUIT_GFX_H
         virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
 
         template<typename T>
         void scroll(const T& input);
-        #endif
 
         /**
          * @brief Set all 8 LEDs in a row to a new state.
