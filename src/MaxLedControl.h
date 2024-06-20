@@ -160,12 +160,12 @@ class LedControl : public Adafruit_GFX {
 
         virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
 
-        template<typename T>
         /**
          * @brief Scroll a message across the display.
          * 
          * @param input Message to be displayed.
          */
+        template<typename T>
         void LedControl::scroll(const T& input) {
             String message = String(input);
             int textX = width();
@@ -181,6 +181,33 @@ class LedControl : public Adafruit_GFX {
 
                 textX--;
                 delay(50);
+            }
+
+            clear();
+        }
+
+        /**
+         * @brief Scroll a message across the display, specifying the speed.
+         * 
+         * @param input Message to be displayed.
+         * @param frame_delay Delay between each frame (in milliseconds). 
+         */
+        template<typename T>
+        void LedControl::scroll(const T& input, int frame_delay) {
+            String message = String(input);
+            int textX = width();
+            int textY = 0;
+            int textWidth = message.length() * 6;
+
+            setTextWrap(false);
+
+            while (textX + textWidth >= 0) {
+                clear();
+                setCursor(textX, textY);
+                print(message);
+
+                textX--;
+                delay(frame_delay);
             }
 
             clear();
