@@ -161,7 +161,30 @@ class LedControl : public Adafruit_GFX {
         virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
 
         template<typename T>
-        void scroll(const T& input);
+        /**
+         * @brief Scroll a message across the display.
+         * 
+         * @param input Message to be displayed.
+         */
+        void LedControl::scroll(const T& input) {
+            String message = String(input);
+            int textX = width();
+            int textY = 0;
+            int textWidth = message.length() * 6;
+
+            setTextWrap(false);
+
+            while (textX + textWidth >= 0) {
+                clear();
+                setCursor(textX, textY);
+                print(message);
+
+                textX--;
+                delay(50);
+            }
+
+            clear();
+        }
 
         /**
          * @brief Set all 8 LEDs in a row to a new state.
