@@ -47,7 +47,7 @@
 LedControl::LedControl(int dataPin, int clkPin, int csPin, int numDevices)
     : Adafruit_GFX(numDevices * 8, 8), SPI_MOSI(dataPin), SPI_CLK(clkPin), SPI_CS(csPin), maxDevices(numDevices) {
 #else
-LedControl(int dataPin, int clkPin, int csPin, int numDevices=1) {
+LedControl::LedControl(int dataPin, int clkPin, int csPin, int numDevices=1) {
 #endif
     SPI_MOSI=dataPin;
     SPI_CLK=clkPin;
